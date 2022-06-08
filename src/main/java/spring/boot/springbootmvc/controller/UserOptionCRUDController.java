@@ -9,7 +9,7 @@ import spring.boot.springbootmvc.service.StudentService;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-public class OptionControllerSpring {
+public class UserOptionCRUDController {
     @Autowired
     StudentService studentService;
 

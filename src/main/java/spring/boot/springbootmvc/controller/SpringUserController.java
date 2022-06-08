@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import spring.boot.springbootmvc.entity.Student;
 import spring.boot.springbootmvc.service.StudentService;
 
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -70,7 +69,6 @@ public class SpringUserController {
     @GetMapping("/showAll")
     @ResponseBody
     public String showAllUsers() throws JsonProcessingException {
-        List<Student> personList = studentService.getAllPerson();
-        return new ObjectMapper().writeValueAsString(personList);
+        return new ObjectMapper().writeValueAsString(studentService.getAllPerson());
     }
 }

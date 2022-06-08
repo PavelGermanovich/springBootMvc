@@ -6,8 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 import spring.boot.springbootmvc.dao.StudentRepository;
 import spring.boot.springbootmvc.entity.Student;
 
-import java.util.List;
-
 @Service
 public class StudentServiceImpl implements StudentService {
     @Autowired
@@ -16,7 +14,7 @@ public class StudentServiceImpl implements StudentService {
     @Transactional
     @Override
     public Student getStudent(int id) {
-        return daoStudent.getReferenceById(id);
+        return daoStudent.findById(id).get();
     }
 
     @Transactional
@@ -39,7 +37,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Transactional
     @Override
-    public List<Student> getAllPerson() {
+    public Iterable<Student> getAllPerson() {
         return daoStudent.findAll();
     }
 }
