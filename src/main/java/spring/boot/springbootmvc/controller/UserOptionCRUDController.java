@@ -31,7 +31,7 @@ public class UserOptionCRUDController {
                 return "userUpdate";
             }
             case 4: {
-                return "showAll";
+                return "redirect:/showAll";
             }
             case 5: {
                 return "removeUser";

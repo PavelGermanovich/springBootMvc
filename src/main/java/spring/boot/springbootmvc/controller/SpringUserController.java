@@ -24,7 +24,6 @@ public class SpringUserController {
     @ResponseBody
     public String getUserInfo(@RequestParam("userId") int id) {
         Student person = studentService.getStudent(id);
-        System.out.println(person);
         return person.toString();
     }
 
@@ -59,7 +58,7 @@ public class SpringUserController {
                 studentService.removePerson(userid);
                 return "user removed!";
             } catch (Exception e) {
-                return "user was not removed due to db spring.boot.springbootmvc.service error";
+                return "user was not removed due to service error";
             }
         } else {
             return "user is not created";

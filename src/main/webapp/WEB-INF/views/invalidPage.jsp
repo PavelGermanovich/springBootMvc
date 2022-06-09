@@ -5,6 +5,8 @@
     <title><spring:message code="errorpage"/></title>
 </head>
 <body>
-
+<h1>
+    <spring:message code="errorpage"/>
+</h1>
 </body>
 </html>
