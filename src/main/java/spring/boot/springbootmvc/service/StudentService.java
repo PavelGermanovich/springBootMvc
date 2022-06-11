@@ -8,4 +8,7 @@ public interface StudentService {
     void updatePerson(Student p);
     void createPerson(Student p);
     Iterable<Student> getAllPerson();
+    Iterable<Student> getStudentWithAgeAfter(int age);
+    Iterable<Student> getStudentWithAgeBetween(int ageMin, int ageMax);
+    Iterable<Student> getStudentsWithName(String name);
 }

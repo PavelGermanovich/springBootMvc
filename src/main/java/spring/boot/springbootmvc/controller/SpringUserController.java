@@ -70,4 +70,25 @@ public class SpringUserController {
     public String showAllUsers() throws JsonProcessingException {
         return new ObjectMapper().writeValueAsString(studentService.getAllPerson());
     }
+
+    @GetMapping("/getPersonWithAgeAfter")
+    @ResponseBody
+    public String getPersonWithAgeAfter(@RequestParam("age") int age) throws JsonProcessingException {
+        Iterable<Student> students = studentService.getStudentWithAgeAfter(age);
+        return new ObjectMapper().writeValueAsString(students);
+    }
+
+    @GetMapping("/getPersonWithAgeBetween")
+    @ResponseBody
+    public String getPersonWithAgeBetween(@RequestParam("ageMin") int ageMin, @RequestParam("ageMax") int ageMax) throws JsonProcessingException {
+        Iterable<Student> students = studentService.getStudentWithAgeBetween(ageMin, ageMax);
+        return new ObjectMapper().writeValueAsString(students);
+    }
+
+    @GetMapping("/getPersonWithName")
+    @ResponseBody
+    public String getStudentWithName(@RequestParam("name") String name) throws JsonProcessingException {
+        Iterable<Student> students = studentService.getStudentsWithName(name);
+        return new ObjectMapper().writeValueAsString(students);
+    }
 }

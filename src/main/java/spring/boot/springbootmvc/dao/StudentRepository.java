@@ -14,6 +14,6 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
     int countStudentByAgeAfter(int age);
 
     @Query(
-            value = "from Student WHERE name like '?1'")
+            value = "from Student WHERE name like ?1")
     List<Student> findAllActiveUsersNative(String name);
 }

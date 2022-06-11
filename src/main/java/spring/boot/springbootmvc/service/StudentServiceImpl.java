@@ -9,36 +9,52 @@ import spring.boot.springbootmvc.entity.Student;
 @Service
 public class StudentServiceImpl implements StudentService {
     @Autowired
-    StudentRepository daoStudent;
+    StudentRepository studentRepository;
 
     @Transactional
     @Override
     public Student getStudent(int id) {
-        return daoStudent.findById(id).get();
+        return studentRepository.findById(id).get();
     }
 
     @Transactional
     @Override
     public void removePerson(int id) {
-        daoStudent.deleteById(id);
+        studentRepository.deleteById(id);
     }
 
     @Override
     @Transactional
     public void updatePerson(Student p) {
-        //to do add isExist
-        daoStudent.save(p);
+        if (studentRepository.existsById(p.getId())) {
+            studentRepository.save(p);
+        }
     }
 
     @Transactional
     @Override
     public void createPerson(Student p) {
-        daoStudent.save(p);
+        studentRepository.save(p);
     }
 
     @Transactional
     @Override
     public Iterable<Student> getAllPerson() {
-        return daoStudent.findAll();
+        return studentRepository.findAll();
+    }
+
+    @Override
+    public Iterable<Student> getStudentWithAgeAfter(int age) {
+        return studentRepository.findAllByAgeAfter(age);
+    }
+
+    @Override
+    public Iterable<Student> getStudentWithAgeBetween(int ageMin, int ageMax) {
+        return studentRepository.findAllByAgeBetweenOrderById(ageMin, ageMax);
+    }
+
+    @Override
+    public Iterable<Student> getStudentsWithName(String name) {
+        return studentRepository.findAllActiveUsersNative(name);
     }
 }
